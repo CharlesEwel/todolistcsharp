@@ -23,6 +23,10 @@ namespace ToDoList
         newTask.Save();
         return View["task_added.cshtml", newTask];
     };
+    Post["/tasks_cleared"]=_=>{
+      Task.ClearAll();
+      return View["tasks_cleared.cshtml"];
+    };
     }
   }
 }
