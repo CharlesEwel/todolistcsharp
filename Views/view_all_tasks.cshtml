@@ -1,8 +1,8 @@
 <h1>To do List</h1>
 <ul>
-  @foreach (string task in Model)
+  @foreach (var task in Model)
   {
-    <li>@task</li>
+    <li><a href="/tasks/@task.GetID()">@task.GetDescription()</a></li>
   }
 </ul>
 <form action="/tasks_cleared" method="post">

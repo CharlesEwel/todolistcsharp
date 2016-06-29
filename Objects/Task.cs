@@ -5,10 +5,13 @@ namespace ToDoList.Objects
   public class Task
   {
     private string _description;
-    private static List<string> _instances = new List<string>{};
+    private static List<Task> _instances = new List<Task>{};
+    private int _id;
     public Task(string description)
     {
       _description = description;
+      _instances.Add(this);
+      _id=_instances.Count;
     }
     public string GetDescription()
     {
@@ -18,17 +21,21 @@ namespace ToDoList.Objects
     {
       _description = newDescription;
     }
-    public static List<string> GetAll()
+    public static List<Task> GetAll()
     {
       return _instances;
-    }
-    public void Save()
-    {
-      _instances.Add(_description);
     }
     public static void ClearAll()
     {
       _instances.Clear();
+    }
+    public int GetID()
+    {
+      return _id;
+    }
+    public static Task Find(int searchID)
+    {
+      return _instances[searchID-1];
     }
   }
 }
